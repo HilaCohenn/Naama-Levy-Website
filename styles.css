@@ -123,8 +123,13 @@ footer{
   .hero{padding:4rem min(6vw,72px)}
   .photo img{width:min(720px,100%)}
 }
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px){
+  .hero{padding:4rem min(6vw,72px)}
+  .photo img{width:min(720px,100%)}
+}
 
-/* מובייל / טאבלט: תמונה כמעט בלי שוליים, מעל הטקסט */
+/* מובייל / טאבלט */
 @media (max-width: 820px){
   .hero{
     flex-direction: column;
@@ -132,34 +137,30 @@ footer{
     padding: 3rem 4%;
     gap: 2rem;
   }
-
   .photo{
-    order: -1;
-    justify-content: center;
-    width: 100%;
+    order:-1; justify-content:center; width:100%;
   }
-
   .photo img{
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    border-radius: 8px; /* לשוליים מינימליים */
-    box-shadow: none;
-    object-fit: cover;
+    width:100%;
+    max-width:none;
+    margin:0;
+    border-radius:8px;       /* אם תרצי עד הקצה ממש: שימי 0 */
+    box-shadow:none;
+    object-fit:cover;
   }
-
-  .hero .text{max-width: 720px; padding: 0}
-  .buttons{justify-content: center}
-  .track{grid-template-columns: 1fr; gap: .6rem}
-  .label{order: -1; text-align: left}
+  .hero .text{max-width:720px; padding:0}
+  .buttons{justify-content:center}
+  .track{grid-template-columns:1fr; gap:.6rem}
+  .label{order:-1; text-align:left}
 }
 
 @media (max-width: 480px){
-  .hero{padding: 2.5rem 4%}
-  .audio, .video{padding: 2rem 4%}
-  .btn, .btn-outline{width: 100%; text-align: center}
-  .photo img{width: 100%}
+  .hero{padding:2.5rem 4%}
+  .audio, .video{padding:2rem 4%}
+  .btn, .btn-outline{width:100%; text-align:center}
+  .photo img{width:100%}
 }
+
 
 /* --- CONTACT PAGE --- */
 .contact-page {
@@ -307,30 +308,3 @@ textarea {
   text-decoration: underline;
 }
 
-/* --- ANIMATIONS --- */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0 }
-  to   { opacity: 1 }
-}
-
-/* הפעלה ראשונית בדף הבית */
-.hero .text {
-  animation: fadeUp .6s ease-out .05s both;
-}
-.photo img {
-  animation: fadeIn .7s ease-out .1s both;
-}
-.audio .track,
-.video h2,
-.video-grid iframe {
-  animation: fadeUp .6s ease-out .15s both;
-}
-
-/* הנמכת אנימציות למי שמעדיף פחות תנועה */
-@media (prefers-reduced-motion: reduce){
-  * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
-}
