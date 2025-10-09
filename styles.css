@@ -324,3 +324,47 @@ textarea { min-height: 140px; resize: vertical; }
   transition: color 0.2s ease;
 }
 .back-link:hover { color: #944f31; text-decoration: underline; }
+/* --- CONTACT PAGE FIX: remove black gap between image and form on mobile --- */
+@media (max-width: 900px){
+  .contact-page{
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: var(--bg);
+  }
+
+  .contact-content{
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100vw;
+    max-width: 100vw;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden; /* כדי שלא ייווצר gap שחור */
+    background-color: var(--light);
+  }
+
+  .contact-image{
+    width: 100%;
+    height: auto;
+    background: #000;
+    margin: 0;
+    padding: 0;
+    line-height: 0; /* מבטל רווח ויזואלי בין בלוקים */
+  }
+
+  .contact-image img{
+    display: block;
+    width: 100%;
+    height: 42vh;              /* אפשר לשחק עם הגובה */
+    object-fit: cover;          /* ממלאת בלי עיוות */
+    object-position: center top;/* מראה את החלק העליון */
+    margin: 0;
+    padding: 0;
+  }
+
+  .contact-text{
+    background-color: var(--light);
+    padding: 18px 4% 26px;
+    margin: 0;
+  }
+}
