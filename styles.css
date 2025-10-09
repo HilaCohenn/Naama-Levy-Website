@@ -409,4 +409,54 @@ textarea { min-height: 140px; resize: vertical; }
     padding: 18px 4% 26px;
   }
 }
+/* ====== HARD OVERRIDES (place at the very end of styles.css) ====== */
+
+/* HERO (mobile) — בלי חיתוך וללא רווחים מעל/מתחת לתמונה */
+@media (max-width: 820px){
+  section.hero.hero, .hero.hero { padding: 0 !important; gap: 0 !important; }
+  .hero .photo.photo { width: 100% !important; order: -1 !important; margin: 0 !important; padding: 0 !important; }
+  .hero .photo.photo img,
+  .hero .photo img {
+    display: block !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: auto !important;            /* שומר יחס, לא נחתך */
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    object-fit: contain !important;      /* לא חותך */
+    object-position: center !important;
+  }
+  .hero .text { 
+    padding: 16px 4% 24px !important; 
+    margin: 0 auto !important; 
+    max-width: 720px !important;
+    text-align: left !important;
+  }
+}
+
+/* CONTACT (mobile) — אם נחתך, להראות את החלק העליון */
+@media (max-width: 860px){
+  .contact-page { padding: 0 !important; }
+  .contact-content {
+    flex-direction: column-reverse !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;        /* שלא יחתוך את הטופס */
+  }
+  .contact-image { width: 100% !important; background: #000 !important; }
+  .contact-image img {
+    display: block !important;
+    width: 100% !important;
+    height: 42vh !important;             /* אפשר לכוונן 38–48vh */
+    object-fit: cover !important;         /* ימלא, ייתכן חיתוך */
+    object-position: center top !important; /* תמיד רואים את הראש */
+    margin: 0 !important;
+  }
+  .contact-text { padding: 18px 4% 26px !important; }
+  .contact-text .btn { width: 100% !important; }
+  input, textarea { font-size: 16px !important; } /* מונע זום באייפון */
+}
 
