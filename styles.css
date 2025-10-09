@@ -35,23 +35,13 @@ h2{font-weight:600}
   transition:transform .12s ease, box-shadow .2s ease, background .2s;
 }
 .btn:hover{background:#944f31; transform:translateY(-1px); box-shadow:0 10px 22px rgba(182,97,62,.28)}
-
 .btn-outline{
-  background: var(--accent-dark);
-  color:#fff;
-  padding:.9rem 1.6rem;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:600;
-  border:none;
+  background: var(--accent-dark); color:#fff; padding:.9rem 1.6rem;
+  border-radius:10px; text-decoration:none; font-weight:600; border:none;
   box-shadow:0 6px 16px rgba(142,74,47,.3);
   transition: transform .12s ease, box-shadow .2s ease, background .2s;
 }
-.btn-outline:hover{
-  background: var(--accent-dark-hover);
-  transform: translateY(-1px);
-  box-shadow:0 10px 22px rgba(142,74,47,.35);
-}
+.btn-outline:hover{ background: var(--accent-dark-hover); transform: translateY(-1px); box-shadow:0 10px 22px rgba(142,74,47,.35)}
 
 /* --- HERO (Desktop / default) --- */
 .hero{
@@ -61,9 +51,8 @@ h2{font-weight:600}
   gap:3rem;
   padding:5rem min(8vw,120px);
   flex-wrap:wrap;
-  margin:0;                    /* בטוח שאין מרווחים חיצוניים */
+  margin:0;
 }
-
 .hero .text{flex:1 1 420px; min-width:320px; max-width:700px}
 .hero h1{font-size: clamp(2.6rem, 3.6vw + 1.2rem, 4.2rem); margin:0 0 1rem}
 .hero p{font-size: clamp(1.05rem, .5vw + .9rem, 1.25rem); line-height:1.6; margin:0 0 2rem}
@@ -75,7 +64,7 @@ h2{font-weight:600}
   border-radius:14px;
   display:block;
   box-shadow:0 14px 36px rgba(0,0,0,.25);
-  object-fit:contain;          /* בדסקטופ נשמרת במלואה */
+  object-fit:contain; /* בדסקטופ לא חותכת */
   margin:0;
 }
 
@@ -94,53 +83,31 @@ h2{font-weight:600}
   align-items:center;
   margin-bottom:1rem;
 }
-.label{font-weight:700; color:var(--text-dark);}
+.label{font-weight:700; color:var(--text-dark)}
 
 /* colored stripe under the audio */
 .player{
-  position:relative;
-  background:var(--accent);
-  border-radius:14px;
-  padding:.6rem .8rem;
+  position:relative; background:var(--accent); border-radius:14px; padding:.6rem .8rem;
   box-shadow: inset 0 2px 0 rgba(255,255,255,.25), 0 6px 16px rgba(182,97,62,.18);
 }
-
 /* Let native controls breathe */
-.player audio{
-  width:100%;
-  height:42px;
-  display:block;
-  filter: saturate(.95);
-  background:transparent;
-  border-radius:10px;
-}
+.player audio{ width:100%; height:42px; display:block; filter: saturate(.95); background:transparent; border-radius:10px }
 
 /* --- VIDEO SECTION --- */
 .video{padding:3.2rem min(8vw,120px)}
 .video h2{margin:0 0 1.6rem}
-.video-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-  gap:1.6rem;
-}
-.video-grid iframe{
-  width:100%; aspect-ratio:16/9; border:0; border-radius:12px;
-  box-shadow:0 10px 24px rgba(0,0,0,.18);
-}
+.video-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.6rem }
+.video-grid iframe{ width:100%; aspect-ratio:16/9; border:0; border-radius:12px; box-shadow:0 10px 24px rgba(0,0,0,.18) }
 
 /* --- FOOTER --- */
-footer{
-  text-align:center; padding:1.6rem; font-size:.95rem;
-  color:var(--text-dark); border-top:1px solid var(--border);
-  margin:0;
-}
+footer{ text-align:center; padding:1.6rem; font-size:.95rem; color:var(--text-dark); border-top:1px solid var(--border); margin:0 }
 
 /* --- ANIMATIONS (subtle) --- */
 @keyframes fadeUp { from {opacity:0; transform: translateY(16px);} to {opacity:1; transform:none;} }
 @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-.hero .text { animation: fadeUp .6s ease-out .05s both; }
-.photo img   { animation: fadeIn .7s ease-out .1s both; }
-.audio .track, .video h2, .video-grid iframe { animation: fadeUp .6s ease-out .15s both; }
+.hero .text { animation: fadeUp .6s ease-out .05s both }
+.photo img   { animation: fadeIn .7s ease-out .1s both }
+.audio .track, .video h2, .video-grid iframe { animation: fadeUp .6s ease-out .15s both }
 
 @media (prefers-reduced-motion: reduce){
   * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
@@ -152,46 +119,27 @@ footer{
   .photo img{width:min(720px,100%)}
 }
 
-/* ===== HERO: Mobile — תמונה מלאה בלי רווחים מעל/מתחת ובלי חיתוך ===== */
+/* ===== HERO: Mobile — תמונה שלמה, בלי שום רווח מעל/מתחת, בלי פס ביניים ===== */
 @media (max-width: 900px){
   .hero{
-    padding:0 !important;      /* אין רווחים בסקשן עצמו */
-    margin:0 !important;
-    gap:0 !important;
-    flex-direction:column;
-    align-items:stretch;
-    text-align:left;
+    padding:0 !important; margin:0 !important; gap:0 !important;
+    flex-direction:column; align-items:stretch; text-align:left;
+    background: var(--bg);
   }
-
   .photo{
-    order:-1;
-    width:100%;
-    margin:0 !important;
-    padding:0 !important;
-    display:block;
+    order:-1; width:100%; margin:0 !important; padding:0 !important;
+    display:block; line-height:0;              /* מבטל פס דק מתחת ל-img */
   }
-
   .photo img{
     display:block !important;
-    width:100vw !important;    /* תופסת את כל רוחב המסך */
-    max-width:100vw !important;
-    height:auto !important;    /* יחס מקורי → לא נחתך */
-    margin:0 !important;       /* בלי שוליים בכלל */
-    border-radius:0 !important;
-    box-shadow:none !important;
-    object-fit:contain !important;   /* לא לחתוך */
-    object-position:center !important;
+    width:100vw !important; max-width:100vw !important;
+    height:auto !important;                     /* יחס מקורי = לא חתוך */
+    margin:0 !important; padding:0 !important;
+    border-radius:0 !important; box-shadow:none !important;
+    object-fit:contain !important; object-position:center !important;
   }
-
-  .hero .text{
-    max-width:720px;
-    padding:16px 4% 24px;      /* ריווח לטקסט בלבד */
-    margin:0 auto;
-  }
-
-  .buttons{justify-content:flex-start}
-  .track{grid-template-columns:1fr; gap:.6rem}
-  .label{text-align:left}
+  /* הטקסט בלבד מקבל ריווח, כך שאין רווח מעל/מתחת לתמונה עצמה */
+  .hero .text{ max-width:720px; padding:16px 4% 24px; margin:0 auto }
 }
 
 @media (max-width: 480px){
@@ -209,108 +157,56 @@ footer{
   align-items: center;
   justify-content: center;
 }
-
 .contact-content {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  flex-wrap: wrap;
-  background-color: var(--light);
-  border-radius: 18px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
-  overflow: hidden;
-  max-width: 1100px;
-  width: 100%;
+  display: flex; align-items: stretch; justify-content: center; flex-wrap: wrap;
+  background-color: var(--light); border-radius: 18px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+  overflow: hidden; max-width: 1100px; width: 100%;
 }
+.contact-text { flex: 1 1 520px; padding: 3rem 3rem 2.2rem }
+.contact-text h1 { font-family: "Playfair Display", serif; font-size: 2.8rem; margin: 0 0 1rem; color: var(--text-dark) }
+.contact-text p { font-size: 1.15rem; margin: 0 0 2rem; color: var(--text-dark); max-width: 520px }
 
-.contact-text { flex: 1 1 520px; padding: 3rem 3rem 2.2rem; }
-.contact-text h1 {
-  font-family: "Playfair Display", serif;
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
-  color: var(--text-dark);
-}
-.contact-text p {
-  font-size: 1.15rem;
-  margin-bottom: 2rem;
-  color: var(--text-dark);
-  max-width: 520px;
-}
-
-form { display: flex; flex-direction: column; gap: 1.1rem; }
-label { font-weight: 600; font-family: Inter, sans-serif; }
+form { display: flex; flex-direction: column; gap: 1.1rem }
+label { font-weight: 600; font-family: Inter, sans-serif }
 input, textarea {
-  width: 100%;
-  padding: 0.95rem 1rem;
-  border-radius: 10px;
-  border: 1.5px solid var(--border);
-  font-family: Inter, sans-serif;
-  font-size: 1rem;
-  background: #fff;
-  color: var(--text-dark);
+  width: 100%; padding: 0.95rem 1rem; border-radius: 10px; border: 1.5px solid var(--border);
+  font-family: Inter, sans-serif; font-size: 1rem; background: #fff; color: var(--text-dark);
   transition: border-color .25s ease, box-shadow .25s ease;
 }
-input:focus, textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(182,97,62,.15);
-}
-textarea { min-height: 140px; resize: vertical; }
-
-.contact-text .btn {
-  align-self: flex-start;
-  margin-top: .5rem;
-  padding: 1rem 1.6rem;
-  border-radius: 12px;
-}
+input:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(182,97,62,.15) }
+textarea { min-height: 140px; resize: vertical }
+.contact-text .btn { align-self: flex-start; margin-top: .5rem; padding: 1rem 1.6rem; border-radius: 12px }
 
 /* footer links in contact */
-.contact-text footer { margin-top: 2.2rem; font-size: .98rem; color: var(--text-dark); }
-.contact-text footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
-.contact-text footer a:hover { text-decoration: underline; }
+.contact-text footer { margin-top: 2.2rem; font-size: .98rem; color: var(--text-dark) }
+.contact-text footer a { color: var(--accent); text-decoration: none; font-weight: 600 }
+.contact-text footer a:hover { text-decoration: underline }
 
 /* Contact image (desktop default) */
-.contact-image {
-  flex: 1 1 480px;
-  background: #000;
-  display: flex;
-  align-items: stretch;
-  justify-content: stretch;
-}
-.contact-image img { width: 100%; height: 100%; object-fit: cover; }
+.contact-image { flex: 1 1 480px; background: #000; display: flex; align-items: stretch; justify-content: stretch }
+.contact-image img { width: 100%; height: 100%; object-fit: cover }
 
-/* --- CONTACT: Mobile — מראה את הראש אם יש חיתוך --- */
+/* --- CONTACT: Mobile — אין פס שחור; אם חותכים רואים את הראש --- */
 @media (max-width: 900px){
-  .contact-page{ padding:0 !important; }
-
+  .contact-page{ padding:0 !important; margin:0 !important; background-color: var(--bg) }
   .contact-content{
-    flex-direction: column-reverse;
-    width: 100vw;
-    max-width: 100vw;
-    border-radius: 0;
-    box-shadow: none;
-    overflow: visible;
+    flex-direction: column-reverse; width: 100vw; max-width: 100vw;
+    border-radius: 0; box-shadow: none; overflow: hidden; background-color: var(--light);
   }
-
-  .contact-image{ width:100%; background:#000; }
+  .contact-image{
+    width:100%; height:auto; margin:0; padding:0; line-height:0;
+    background: transparent;              /* לא שחור, שלא ייראה פס */
+  }
   .contact-image img{
-    display:block !important;
-    width:100% !important;
-    height:42vh !important;          /* גובה נעים; אפשר לכוונן 38–48vh */
-    object-fit: cover !important;     /* ימלא את הרוחב */
-    object-position: center top !important; /* תמיד רואים את החלק העליון */
-    margin:0 !important;
+    display:block; width:100%; height:42vh; margin:0; padding:0;
+    object-fit: cover; object-position: center top; /* מראה את החלק העליון */
   }
-
-  .contact-text{
-    padding:18px 4% 26px !important;
-  }
-  .contact-text h1{ font-size:2rem; margin:6px 0 8px; }
-  .contact-text p{ font-size:1.05rem; margin:0 0 14px; max-width:none; }
-
-  form{ gap:12px; }
-  input, textarea{ font-size:16px; padding:14px 12px; width:100%; }
-  .contact-text .btn{ width:100%; text-align:center; padding:14px 16px; border-radius:12px; margin-top:6px; }
+  .contact-text{ background-color: var(--light); padding: 18px 4% 26px; margin:0 }
+  .contact-text h1{ font-size:2rem; margin:6px 0 8px }
+  .contact-text p{ font-size:1.05rem; margin:0 0 14px; max-width:none }
+  form{ gap:12px }
+  input, textarea{ font-size:16px; padding:14px 12px; width:100% } /* מונע זום באייפון */
+  .contact-text .btn{ width:100%; text-align:center; padding:14px 16px; border-radius:12px; margin-top:6px }
 }
 
 /* Back to Home link (אם משתמשים) */
@@ -323,136 +219,4 @@ textarea { min-height: 140px; resize: vertical; }
   text-decoration: none;
   transition: color 0.2s ease;
 }
-.back-link:hover { color: #944f31; text-decoration: underline; }
-/* --- CONTACT PAGE FIX: remove black gap between image and form on mobile --- */
-@media (max-width: 900px){
-  .contact-page{
-    padding: 0 !important;
-    margin: 0 !important;
-    background-color: var(--bg);
-  }
-
-  .contact-content{
-    display: flex;
-    flex-direction: column-reverse;
-    width: 100vw;
-    max-width: 100vw;
-    border-radius: 0;
-    box-shadow: none;
-    overflow: hidden; /* כדי שלא ייווצר gap שחור */
-    background-color: var(--light);
-  }
-
-  .contact-image{
-    width: 100%;
-    height: auto;
-    background: #000;
-    margin: 0;
-    padding: 0;
-    line-height: 0; /* מבטל רווח ויזואלי בין בלוקים */
-  }
-
-  .contact-image img{
-    display: block;
-    width: 100%;
-    height: 42vh;              /* אפשר לשחק עם הגובה */
-    object-fit: cover;          /* ממלאת בלי עיוות */
-    object-position: center top;/* מראה את החלק העליון */
-    margin: 0;
-    padding: 0;
-  }
-
-  .contact-text{
-    background-color: var(--light);
-    padding: 18px 4% 26px;
-    margin: 0;
-  }
-}
-
-/* ===== FINAL MOBILE FIXES (no gaps anywhere) ===== */
-
-/* --- HERO (Mobile): remove gaps above/below and between image/text --- */
-@media (max-width: 900px) {
-  .hero {
-    padding: 0 !important;
-    margin: 0 !important;
-    gap: 0 !important;
-    flex-direction: column;
-    align-items: stretch;
-    text-align: left;
-    background: var(--bg);
-  }
-
-  .photo {
-    order: -1;
-    width: 100%;
-    margin: 0 !important;
-    padding: 0 !important;
-    display: block;
-    line-height: 0; /* מונע רווח מתחת לתמונה */
-  }
-
-  .photo img {
-    display: block !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
-    height: auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    object-fit: contain !important;
-    object-position: center !important;
-  }
-
-  .hero .text {
-    max-width: 720px;
-    padding: 0 4% 24px; /* הורדנו padding עליון */
-    margin: 0 auto;
-  }
-}
-
-/* --- CONTACT (Mobile): remove black gap between image and form --- */
-@media (max-width: 900px) {
-  .contact-page {
-    padding: 0 !important;
-    margin: 0 !important;
-    background-color: var(--bg);
-  }
-
-  .contact-content {
-    display: flex;
-    flex-direction: column-reverse;
-    width: 100vw;
-    max-width: 100vw;
-    border-radius: 0;
-    box-shadow: none;
-    overflow: hidden; /* מונע רווח שחור */
-    background-color: var(--light);
-  }
-
-  .contact-image {
-    width: 100%;
-    height: auto;
-    background: #000;
-    margin: 0;
-    padding: 0;
-    line-height: 0; /* מונע רווח מתחת לתמונה */
-  }
-
-  .contact-image img {
-    display: block;
-    width: 100%;
-    height: 42vh;
-    object-fit: cover;
-    object-position: center top; /* מראה את הראש */
-    margin: 0;
-    padding: 0;
-  }
-
-  .contact-text {
-    background-color: var(--light);
-    padding: 18px 4% 26px;
-    margin: 0;
-  }
-}
+.back-link:hover { color: #944f31; text-decoration: underline }
