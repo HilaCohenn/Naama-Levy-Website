@@ -10,20 +10,20 @@
   --accent-dark-hover:#753B25;
 }
 
-/* --- GLOBAL --- */
+/* --- GLOBAL RESET (מונע פערים של user-agent) --- */
 *{box-sizing:border-box}
-html,body{height:100%}
+html,body,section,div,header,main,footer,figure,picture{margin:0; padding:0}
+img{display:block; max-width:100%; height:auto; margin:0; padding:0; vertical-align:middle}
 body{
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background:var(--bg);
   color:var(--text-dark);
-  margin:0;
 }
 
 /* Typography */
 h1,h2{font-family:"Playfair Display", Georgia, serif; letter-spacing:.3px}
-h1{font-weight:700}
-h2{font-weight:600}
+h1{font-weight:700; margin:0 0 1rem}
+h2{font-weight:600; margin:0 0 1.6rem}
 
 /* --- BUTTONS --- */
 .buttons{display:flex; gap:1rem; flex-wrap:wrap}
@@ -50,24 +50,18 @@ h2{font-weight:600}
   gap:3rem;
   padding:5rem min(8vw,120px);
   flex-wrap:wrap;
-  margin:0;
 }
 .hero .text{flex:1 1 420px; min-width:320px; max-width:700px}
-.hero h1{font-size: clamp(2.6rem, 3.6vw + 1.2rem, 4.2rem); margin:0 0 1rem}
+.hero h1{font-size: clamp(2.6rem, 3.6vw + 1.2rem, 4.2rem)}
 .hero p{font-size: clamp(1.05rem, .5vw + .9rem, 1.25rem); line-height:1.6; margin:0 0 2rem}
 
 /* Photo */
-.photo{
-  flex:1 1 520px; display:flex; justify-content:flex-end;
-  margin:0; padding:0; line-height:0;        /* 🔒 אין פס מתחת לתמונה */
-}
+.photo{flex:1 1 520px; display:flex; justify-content:flex-end; line-height:0}
 .photo img{
   width:min(680px, 100%);
   border-radius:14px;
-  display:block;                               /* 🔒 מבטל inline-gap */
   box-shadow:0 14px 36px rgba(0,0,0,.25);
-  object-fit:contain;                          /* בדסקטופ לא חותכת */
-  margin:0; padding:0; vertical-align:middle;  /* 🔒 אין רווחים נסתרים */
+  object-fit:contain; /* בדסקטופ לא חותכת */
 }
 
 /* --- AUDIO SECTION --- */
@@ -76,8 +70,7 @@ h2{font-weight:600}
   padding:3.2rem min(8vw,120px);
   border-top:3px solid var(--accent);
 }
-.audio h2{font-size: clamp(1.6rem, .8vw + 1.2rem, 2.2rem); margin:0 0 1.8rem}
-
+.audio h2{font-size: clamp(1.6rem, .8vw + 1.2rem, 2.2rem)}
 .track{
   display:grid;
   grid-template-columns: 150px 1fr;
@@ -86,23 +79,19 @@ h2{font-weight:600}
   margin-bottom:1rem;
 }
 .label{font-weight:700; color:var(--text-dark)}
-
-/* colored stripe under the audio */
 .player{
   position:relative; background:var(--accent); border-radius:14px; padding:.6rem .8rem;
   box-shadow: inset 0 2px 0 rgba(255,255,255,.25), 0 6px 16px rgba(182,97,62,.18);
 }
-/* Let native controls breathe */
 .player audio{ width:100%; height:42px; display:block; filter: saturate(.95); background:transparent; border-radius:10px }
 
 /* --- VIDEO SECTION --- */
 .video{padding:3.2rem min(8vw,120px)}
-.video h2{margin:0 0 1.6rem}
 .video-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.6rem }
 .video-grid iframe{ width:100%; aspect-ratio:16/9; border:0; border-radius:12px; box-shadow:0 10px 24px rgba(0,0,0,.18) }
 
 /* --- FOOTER --- */
-footer{ text-align:center; padding:1.6rem; font-size:.95rem; color:var(--text-dark); border-top:1px solid var(--border); margin:0 }
+footer{ text-align:center; padding:1.6rem; font-size:.95rem; color:var(--text-dark); border-top:1px solid var(--border) }
 
 /* --- ANIMATIONS (subtle) --- */
 @keyframes fadeUp { from {opacity:0; transform: translateY(16px);} to {opacity:1; transform:none;} }
@@ -110,7 +99,6 @@ footer{ text-align:center; padding:1.6rem; font-size:.95rem; color:var(--text-da
 .hero .text { animation: fadeUp .6s ease-out .05s both }
 .photo img   { animation: fadeIn .7s ease-out .1s both }
 .audio .track, .video h2, .video-grid iframe { animation: fadeUp .6s ease-out .15s both }
-
 @media (prefers-reduced-motion: reduce){
   * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
@@ -121,34 +109,34 @@ footer{ text-align:center; padding:1.6rem; font-size:.95rem; color:var(--text-da
   .photo img{width:min(720px,100%)}
 }
 
-/* ===== HERO: Mobile — תמונה שלמה, אפס רווח מעל/מתחת, בלי פס ביניים ===== */
+/* ===== HERO: MOBILE — אפס רווח מתחת לתמונה, בלי חיתוך ===== */
 @media (max-width: 900px){
   .hero{
     padding:0 !important; margin:0 !important; gap:0 !important;
     flex-direction:column; align-items:stretch; text-align:left; background: var(--bg);
   }
+
+  /* תמונה קודם, אפס רווחים */
   .photo{
     order:-1; width:100%; margin:0 !important; padding:0 !important;
-    display:block; line-height:0;       /* 🔒 מבטל פס דק מתחת ל-img */
+    display:block; line-height:0 !important;           /* מונע פס מתחת ל-img */
   }
   .photo img{
     display:block !important;
     width:100vw !important; max-width:100vw !important;
-    height:auto !important;             /* 🔒 לא חותך, שומר יחס */
+    height:auto !important;                              /* לא חותך */
     margin:0 !important; padding:0 !important;
     border-radius:0 !important; box-shadow:none !important;
     object-fit:contain !important; object-position:center !important;
-    vertical-align:middle !important;   /* 🔒 אין רווחי baseline */
+    vertical-align:middle !important;
   }
-  /* הטקסט מתחיל מיד אחרי התמונה, בלי רווח עליון */
-  .hero .text{ max-width:720px; padding:0 4% 24px !important; margin:0 auto }
-  .hero .text > *:first-child{ margin-top:0 !important } /* ליתר בטחון */
-}
 
-@media (max-width: 480px){
-  .audio, .video{padding: 20px 4%}
-  .btn, .btn-outline{width:100%; text-align:center}
-  .photo img{width:100vw}
+  /* הטקסט מיד אחרי התמונה — בלי מרווח עליון */
+  .hero .text{
+    max-width:720px; margin:0 auto;
+    padding:0 4% 24px !important;                       /* אין padding-top */
+  }
+  .hero .text > *:first-child{ margin-top:0 !important }
 }
 
 /* --- CONTACT PAGE --- */
@@ -166,7 +154,7 @@ footer{ text-align:center; padding:1.6rem; font-size:.95rem; color:var(--text-da
   overflow: hidden; max-width: 1100px; width: 100%;
 }
 .contact-text { flex: 1 1 520px; padding: 3rem 3rem 2.2rem }
-.contact-text h1 { font-family: "Playfair Display", serif; font-size: 2.8rem; margin: 0 0 1rem; color: var(--text-dark) }
+.contact-text h1 { font-size: 2.8rem; margin: 0 0 1rem; color: var(--text-dark) }
 .contact-text p { font-size: 1.15rem; margin: 0 0 2rem; color: var(--text-dark); max-width: 520px }
 
 form { display: flex; flex-direction: column; gap: 1.1rem }
@@ -188,33 +176,38 @@ textarea { min-height: 140px; resize: vertical }
 /* Contact image (desktop default) */
 .contact-image {
   flex: 1 1 480px;
-  background: transparent;              /* 🔒 שלא ייראה פס */
-  display: flex; align-items: stretch; justify-content: stretch;
-  margin:0; padding:0; line-height:0;   /* 🔒 מבטל פס מתחת לתמונה */
+  background: transparent;           /* שלא ייראה פס */
+  display: block;
+  margin:0; padding:0; line-height:0;/* חשוב כדי להעלים פער מתחת ל-img */
 }
-.contact-image img { width: 100%; height: 100%; object-fit: cover; display:block; margin:0; padding:0 }
+.contact-image img { width: 100%; height: 100%; object-fit: cover; display:block }
 
-/* --- CONTACT: Mobile — בלי פס/שוליים; אם חותכים רואים את הראש --- */
+/* --- CONTACT: MOBILE — אפס רווח בין התמונה לטופס; אם חותכים רואים את הראש --- */
 @media (max-width: 900px){
-  .contact-page{ padding:0 !important; margin:0 !important; background-color: var(--bg) }
+  .contact-page{ padding:0 !important; margin:0 !important }
   .contact-content{
     flex-direction: column-reverse; width: 100vw; max-width: 100vw;
     border-radius: 0; box-shadow: none; overflow: hidden; background-color: var(--light);
   }
+
   .contact-image{
-    width:100%; height:auto; margin:0; padding:0; line-height:0; background: transparent;
+    width:100%; margin:0 !important; padding:0 !important; line-height:0 !important;
+    background: transparent !important;
   }
   .contact-image img{
-    display:block; width:100%; height:42vh; margin:0; padding:0;
-    object-fit: cover; object-position: center top; /* תמיד מראה את הראש */
-    vertical-align:middle;
+    display:block !important; width:100% !important; margin:0 !important; padding:0 !important;
+    height:42vh !important; object-fit: cover !important; object-position: center top !important;
+    vertical-align:middle !important;
   }
-  /* הטופס מתחיל בלי רווח עליון כדי להצמד לתמונה */
-  .contact-text{ background-color: var(--light); padding:0 4% 26px !important; margin:0 }
+
+  /* הטופס נצמד, בלי מרווח עליון */
+  .contact-text{
+    background-color: var(--light); margin:0 !important; padding:0 4% 26px !important;
+  }
   .contact-text h1{ margin:0 0 8px !important; font-size:2rem }
   .contact-text p{ font-size:1.05rem; margin:0 0 14px; max-width:none }
   form{ gap:12px }
-  input, textarea{ font-size:16px; padding:14px 12px; width:100% }
+  input, textarea{ font-size:16px; padding:14px 12px; width:100% } /* iOS: no auto-zoom */
   .contact-text .btn{ width:100%; text-align:center; padding:14px 16px; border-radius:12px; margin-top:6px }
 }
 
