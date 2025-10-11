@@ -331,7 +331,7 @@ textarea { min-height: 140px; resize: vertical }
 /* אם נשאר קו דקיק במסכים מסוימים – הדקי עוד טיפה: */
 @supports (margin-top: -1px){
   @media (max-width:900px){
-    .hero .text, .contact-text{ margin-top:-14px !important; }
+    .hero .text, .contact-text{ margin-top:-16px !important; }
   }
 }
 
