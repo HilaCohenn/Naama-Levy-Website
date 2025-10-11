@@ -300,4 +300,38 @@ textarea { min-height: 140px; resize: vertical }
   }
   .contact-text h1{ margin-top:0 !important; }
 }
+/* ===== ZERO-GAP BELOW IMAGES (iOS fix) ===== */
+@media (max-width: 900px){
+
+  /* HERO – מצמיד את הבלוק של הטקסט לתמונה */
+  .hero{ padding-bottom:0 !important; }
+  .photo{ line-height:0 !important; }
+  .photo img{ display:block !important; margin:0 !important; padding:0 !important; }
+  .hero .text{
+    margin-top:-12px !important;   /* <<< מצמיד לטובה, אפשר לכוונן -8/-16 */
+    padding-top:0 !important;
+  }
+  .hero .text h1{ margin-top:0 !important; }
+
+  /* CONTACT – מצמיד את הטופס לתמונה */
+  .contact-page{ padding-top:0 !important; }
+  .contact-content{ overflow:hidden !important; }
+  .contact-image{ line-height:0 !important; }
+  .contact-image img{
+    display:block !important; margin:0 !important; padding:0 !important;
+    height:42vh !important; object-fit:cover !important; object-position:center top !important;
+  }
+  .contact-text{
+    margin-top:-12px !important;   /* <<< אותו עיקרון – הצמדה מלאה */
+    padding-top:0 !important;
+  }
+  .contact-text h1{ margin-top:0 !important; }
+}
+
+/* אם נשאר קו דקיק במסכים מסוימים – הדקי עוד טיפה: */
+@supports (margin-top: -1px){
+  @media (max-width:900px){
+    .hero .text, .contact-text{ margin-top:-14px !important; }
+  }
+}
 
