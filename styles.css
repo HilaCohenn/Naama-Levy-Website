@@ -262,4 +262,42 @@ textarea { min-height: 140px; resize: vertical }
     padding-top: 0 !important;
   }
 }
+/* ===== KILL THE GAP BELOW IMAGES ON MOBILE (Hero + Contact) ===== */
+@media (max-width: 900px){
+
+  /* HERO */
+  .hero{ padding:0 !important; margin:0 !important; gap:0 !important; }
+  .photo{ line-height:0 !important; margin:0 !important; padding:0 !important; }
+  .photo img{ display:block !important; margin:0 !important; padding:0 !important; }
+  /* החלק הבעייתי: מרווח עליון של הבלוק והכותרת */
+  .hero .text{
+    margin:0 !important;
+    padding:0 4% 24px !important;   /* אין padding-top */
+    overflow:hidden !important;     /* מונע קריסת מרג'ין */
+  }
+  .hero .text h1{ margin-top:0 !important; }
+
+  /* CONTACT */
+  .contact-page{ padding:0 !important; margin:0 !important; }
+  .contact-content{
+    overflow:hidden !important;     /* מונע קריסת מרג'ין שגורמת לפס */
+    border-radius:0 !important;
+    box-shadow:none !important;
+  }
+  .contact-image{ line-height:0 !important; margin:0 !important; padding:0 !important; background:transparent !important; }
+  .contact-image img{
+    display:block !important;
+    width:100% !important;
+    height:42vh !important;
+    object-fit:cover !important;
+    object-position:center top !important;  /* רואים את הראש */
+    margin:0 !important; padding:0 !important;
+  }
+  .contact-text{
+    margin:0 !important;
+    padding:0 4% 26px !important;   /* אין padding-top */
+    overflow:hidden !important;     /* אין קריסת מרג'ין */
+  }
+  .contact-text h1{ margin-top:0 !important; }
+}
 
