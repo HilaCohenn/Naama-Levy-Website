@@ -149,6 +149,7 @@ footer{ text-align:center; padding:1.6rem; font-size:.95rem; color:var(--text-da
   justify-content: center;
 }
 .contact-content {
+  position: relative;  /* הוספת שורה זו */
   display: flex; align-items: stretch; justify-content: center; flex-wrap: wrap;
   background-color: var(--light); border-radius: 18px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
   overflow: hidden; max-width: 1100px; width: 100%;
@@ -360,6 +361,41 @@ textarea { min-height: 140px; resize: vertical }
     margin-bottom: 1.2rem;
     font-size: 0.9rem;
     padding: 0.6rem 1rem;
+  }
+}
+
+/* Back button styling */
+.back-button {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 0.7rem 1.2rem;
+  background: var(--accent-dark);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(142,74,47,.3);
+  transition: transform .12s ease, box-shadow .2s ease, background .2s;
+  position: absolute;
+  left: 3rem;
+  top: 3rem;
+}
+
+.back-button:hover {
+  background: var(--accent-dark-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(142,74,47,.35);
+}
+
+@media (max-width: 900px) {
+  .back-button {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+    z-index: 100;
   }
 }
 
