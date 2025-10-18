@@ -341,9 +341,20 @@ textarea { min-height: 140px; resize: vertical }
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
   padding: 0.7rem 1.2rem;
+  background: var(--accent-dark);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(142,74,47,.3);
+  transition: transform .12s ease, box-shadow .2s ease, background .2s;
 }
 
-/* התאמה למובייל */
+.contact-text .btn-outline:hover {
+  background: var(--accent-dark-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(142,74,47,.35);
+}
+
 @media (max-width: 900px) {
   .contact-text .btn-outline {
     margin-bottom: 1.2rem;
