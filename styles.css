@@ -335,3 +335,20 @@ textarea { min-height: 140px; resize: vertical }
   }
 }
 
+/* עדכון עיצוב כפתור חזרה */
+.contact-text .btn-outline {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  padding: 0.7rem 1.2rem;
+}
+
+/* התאמה למובייל */
+@media (max-width: 900px) {
+  .contact-text .btn-outline {
+    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
