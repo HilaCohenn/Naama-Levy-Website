@@ -367,7 +367,6 @@ textarea { min-height: 140px; resize: vertical }
 /* Back button styling */
 .back-button {
   display: inline-block;
-  margin-bottom: 1.5rem;
   padding: 0.7rem 1.2rem;
   background: var(--accent-dark);
   color: #fff;
@@ -377,9 +376,10 @@ textarea { min-height: 140px; resize: vertical }
   font-weight: 600;
   box-shadow: 0 6px 16px rgba(142,74,47,.3);
   transition: transform .12s ease, box-shadow .2s ease, background .2s;
-  position: absolute;
-  left: 3rem;
-  top: 3rem;
+  position: fixed;  /* שינוי ל-fixed */
+  left: 2rem;
+  top: 2rem;
+  z-index: 1000;  /* וודאות שיהיה מעל הכל */
 }
 
 .back-button:hover {
@@ -390,12 +390,10 @@ textarea { min-height: 140px; resize: vertical }
 
 @media (max-width: 900px) {
   .back-button {
-    position: fixed;
     left: 1rem;
     top: 1rem;
     font-size: 0.9rem;
     padding: 0.6rem 1rem;
-    z-index: 100;
   }
 }
 
