@@ -383,35 +383,3 @@ textarea { min-height: 140px; resize: vertical }
   }
 }
 
-/* === MOBILE-ONLY TWEAKS FOR BACK BUTTON (לא משנה את הדסקטופ) === */
-@media (max-width: 900px){
-  /* ה-bar העליון: דביק, נקי, בלי מרווחים ש"שוברים" את הפריסה */
-  .back-bar{
-    position: sticky;
-    top: calc(env(safe-area-inset-top, 0px)); /* תמיכה ב-notch */
-    z-index: 5;
-    margin: 0 !important;
-    padding: 8px 4%;
-    background: var(--bg);              /* אותו רקע של העמוד */
-    box-shadow: 0 1px 0 rgba(0,0,0,.06);/* קו דקיק מתחת */
-  }
-
-  /* הכפתור: רוחב מלא, ממורכז, לחיץ יותר */
-  .back-button{
-    width: 100%;
-    justify-content: center;
-    padding: 12px 14px;
-    font-size: 16px;                    /* בלי זום באייפון */
-    border-radius: 14px;
-    background: #fff;
-    color: var(--text-dark);
-    border: 1px solid var(--border);
-    box-shadow: 0 6px 16px rgba(0,0,0,.08);
-    transform: none !important;         /* מבטל קפיצות hover במובייל */
-  }
-
-  /* מרווח עדין מתחת ל-bar כדי שלא "יידבק" לטופס/תמונה */
-  .contact-content{
-    margin-top: 8px;
-  }
-}
