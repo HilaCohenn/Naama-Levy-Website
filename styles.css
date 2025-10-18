@@ -141,7 +141,7 @@ footer{ text-align:center; padding:1.6rem; font-size:.95rem; color:var(--text-da
 
 /* --- CONTACT PAGE --- */
 .contact-page {
-  position: relative;  /* הוספת שורה זו */
+  position: relative;
   min-height: 100vh;
   background-color: var(--bg);
   padding: 4rem min(8vw, 120px);
@@ -150,7 +150,7 @@ footer{ text-align:center; padding:1.6rem; font-size:.95rem; color:var(--text-da
   justify-content: center;
 }
 .contact-content {
-  position: relative;  /* הוספת שורה זו */
+  position: relative;
   display: flex; align-items: stretch; justify-content: center; flex-wrap: wrap;
   background-color: var(--light); border-radius: 18px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
   overflow: hidden; max-width: 1100px; width: 100%;
@@ -178,13 +178,13 @@ textarea { min-height: 140px; resize: vertical }
 /* Contact image (desktop default) */
 .contact-image {
   flex: 1 1 480px;
-  background: transparent;           /* שלא ייראה פס */
+  background: transparent;
   display: block;
-  margin:0; padding:0; line-height:0;/* חשוב כדי להעלים פער מתחת ל-img */
+  margin:0; padding:0; line-height:0;
 }
 .contact-image img { width: 100%; height: 100%; object-fit: cover; display:block }
 
-/* --- CONTACT: MOBILE — אפס רווח בין התמונה לטופס; אם חותכים רואים את הראש --- */
+/* --- CONTACT: MOBILE --- */
 @media (max-width: 900px){
   .contact-page{ padding:0 !important; margin:0 !important }
   .contact-content{
@@ -202,7 +202,6 @@ textarea { min-height: 140px; resize: vertical }
     vertical-align:middle !important;
   }
 
-  /* הטופס נצמד, בלי מרווח עליון */
   .contact-text{
     background-color: var(--light); margin:0 !important; padding:0 4% 26px !important;
   }
@@ -213,7 +212,7 @@ textarea { min-height: 140px; resize: vertical }
   .contact-text .btn{ width:100%; text-align:center; padding:14px 16px; border-radius:12px; margin-top:6px }
 }
 
-/* Back to Home link (אם משתמשים) */
+/* Back to Home link (אם משתמשים בתוך טקסט) */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -227,9 +226,7 @@ textarea { min-height: 140px; resize: vertical }
 
 @media (max-width:900px){ .hero .text h1, .contact-text h1 { margin-top:0 !important } }
 
-/* ===== FINAL FIX: remove beige gap below hero & contact image ===== */
-
-/* מחיקת כל רווח בין תמונה לתוכן */
+/* ===== FINAL FIXES: אפסים מרווחים מתחת לתמונות ===== */
 .photo,
 .photo img,
 .contact-image,
@@ -240,49 +237,32 @@ textarea { min-height: 140px; resize: vertical }
   line-height: 0 !important;
   vertical-align: bottom !important;
 }
-
-/* מעלימים מרווח שנוצר מהסקשן הבא */
 .hero + *,
 .contact-image + * {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
-
-/* ספציפית למובייל */
 @media (max-width: 900px) {
-  .hero {
-    padding-bottom: 0 !important;
-  }
-  .hero .text {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-  .contact-page,
-  .contact-content,
-  .contact-text {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
+  .hero { padding-bottom: 0 !important; }
+  .hero .text { margin-top: 0 !important; padding-top: 0 !important; }
+  .contact-page, .contact-content, .contact-text { margin-top: 0 !important; padding-top: 0 !important; }
 }
-/* ===== KILL THE GAP BELOW IMAGES ON MOBILE (Hero + Contact) ===== */
-@media (max-width: 900px){
 
-  /* HERO */
+/* ===== MOBILE ZERO-GAP TUNING ===== */
+@media (max-width: 900px){
   .hero{ padding:0 !important; margin:0 !important; gap:0 !important; }
   .photo{ line-height:0 !important; margin:0 !important; padding:0 !important; }
   .photo img{ display:block !important; margin:0 !important; padding:0 !important; }
-  /* החלק הבעייתי: מרווח עליון של הבלוק והכותרת */
   .hero .text{
     margin:0 !important;
-    padding:0 4% 24px !important;   /* אין padding-top */
-    overflow:hidden !important;     /* מונע קריסת מרג'ין */
+    padding:0 4% 24px !important;
+    overflow:hidden !important;
   }
   .hero .text h1{ margin-top:0 !important; }
 
-  /* CONTACT */
   .contact-page{ padding:0 !important; margin:0 !important; }
   .contact-content{
-    overflow:hidden !important;     /* מונע קריסת מרג'ין שגורמת לפס */
+    overflow:hidden !important;
     border-radius:0 !important;
     box-shadow:none !important;
   }
@@ -292,52 +272,18 @@ textarea { min-height: 140px; resize: vertical }
     width:100% !important;
     height:42vh !important;
     object-fit:cover !important;
-    object-position:center top !important;  /* רואים את הראש */
+    object-position:center top !important;
     margin:0 !important; padding:0 !important;
   }
   .contact-text{
     margin:0 !important;
-    padding:0 4% 26px !important;   /* אין padding-top */
-    overflow:hidden !important;     /* אין קריסת מרג'ין */
-  }
-  .contact-text h1{ margin-top:0 !important; }
-}
-/* ===== ZERO-GAP BELOW IMAGES (iOS fix) ===== */
-@media (max-width: 900px){
-
-  /* HERO – מצמיד את הבלוק של הטקסט לתמונה */
-  .hero{ padding-bottom:0 !important; }
-  .photo{ line-height:0 !important; }
-  .photo img{ display:block !important; margin:0 !important; padding:0 !important; }
-  .hero .text{
-    margin-top:-12px !important;   /* <<< מצמיד לטובה, אפשר לכוונן -8/-16 */
-    padding-top:0 !important;
-  }
-  .hero .text h1{ margin-top:0 !important; }
-
-  /* CONTACT – מצמיד את הטופס לתמונה */
-  .contact-page{ padding-top:0 !important; }
-  .contact-content{ overflow:hidden !important; }
-  .contact-image{ line-height:0 !important; }
-  .contact-image img{
-    display:block !important; margin:0 !important; padding:0 !important;
-    height:42vh !important; object-fit:cover !important; object-position:center top !important;
-  }
-  .contact-text{
-    margin-top:-12px !important;   /* <<< אותו עיקרון – הצמדה מלאה */
-    padding-top:0 !important;
+    padding:0 4% 26px !important;
+    overflow:hidden !important;
   }
   .contact-text h1{ margin-top:0 !important; }
 }
 
-/* אם נשאר קו דקיק במסכים מסוימים – הדקי עוד טיפה: */
-@supports (margin-top: -1px){
-  @media (max-width:900px){
-    .hero .text, .contact-text{ margin-top:-16px !important; }
-  }
-}
-
-/* עדכון עיצוב כפתור חזרה */
+/* עדכון עיצוב כפתור חזרה בתוך טקסט (נשאר) */
 .contact-text .btn-outline {
   display: inline-block;
   margin-bottom: 1.5rem;
@@ -350,13 +296,11 @@ textarea { min-height: 140px; resize: vertical }
   box-shadow: 0 6px 16px rgba(142,74,47,.3);
   transition: transform .12s ease, box-shadow .2s ease, background .2s;
 }
-
 .contact-text .btn-outline:hover {
   background: var(--accent-dark-hover);
   transform: translateY(-1px);
   box-shadow: 0 10px 22px rgba(142,74,47,.35);
 }
-
 @media (max-width: 900px) {
   .contact-text .btn-outline {
     margin-bottom: 1.2rem;
@@ -365,70 +309,53 @@ textarea { min-height: 140px; resize: vertical }
   }
 }
 
-/* Back button styling */
-.back-button {
-  display: inline-block;
-  padding: 0.5rem 0.8rem;  /* קטן יותר */
-  background: var(--accent-dark);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;      /* קטן יותר */
-  font-size: 0.85rem;      /* קטן יותר */
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(142,74,47,.25);  /* צל עדין יותר */
-  transition: transform .12s ease, box-shadow .2s ease, background .2s;
-  position: fixed;         /* קבוע במקום */
-  left: 1.5rem;
-  top: 1.5rem;
-  z-index: 1000;
+/* ===== NEW: BACK BAR (Sticky) + BUTTON (לא חופף) ===== */
+.back-bar{
+  position: sticky;
+  top: calc(12px + env(safe-area-inset-top, 0px));
+  z-index: 5;
+  padding: .25rem 0;
+  margin: -1rem 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
 }
 
-.back-button:hover {
-  background: var(--accent-dark-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(142,74,47,.3);
-}
-
-@media (max-width: 900px) {
-  .back-button {
-    left: 1rem;
-    top: 1rem;
-    font-size: 0.8rem;    /* עוד יותר קטן במובייל */
-    padding: 0.4rem 0.7rem;
-  }
-}
-
-/* Back button - new styling */
-.back-btn {
-  position: fixed;
-  left: 20px;
-  top: 20px;
-  z-index: 9999;
+.back-button{
   display: inline-flex;
   align-items: center;
-  padding: 8px 12px;
-  background: var(--accent-dark);
-  color: white;
+  gap: .5rem;
+  padding: .6rem 1rem;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text-dark);
   text-decoration: none;
-  border-radius: 6px;
-  font-size: 0.85rem;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  transition: all 0.2s ease;
+  font-size: .95rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+  transition: transform .12s ease, box-shadow .2s ease, background .2s, border-color .2s;
+  will-change: transform;
 }
-
-.back-btn:hover {
-  background: var(--accent-dark-hover);
+.back-button:hover{
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  background: #fffaf6;
+  border-color: color-mix(in srgb, var(--border), var(--accent) 25%);
+  box-shadow: 0 12px 28px rgba(0,0,0,.10);
 }
-
-@media (max-width: 900px) {
-  .back-btn {
-    left: 12px;
-    top: 12px;
-    padding: 6px 10px;
-    font-size: 0.8rem;
+.back-button:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(182,97,62,.18), 0 8px 22px rgba(0,0,0,.08);
+}
+@media (max-width: 900px){
+  .back-bar{
+    top: calc(8px + env(safe-area-inset-top, 0px));
+    margin: 0 0 .75rem;
+  }
+  .back-button{
+    font-size: .9rem;
+    padding: .55rem .9rem;
   }
 }
 
+/* חשוב: אין כאן גרסה עם position: fixed ל-.back-button יותר */
