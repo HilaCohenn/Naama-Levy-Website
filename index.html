@@ -102,42 +102,34 @@
 
   <!-- נגן-יחיד: כשאחד מתחיל לנגן — הישן נעצר ומאופס -->
   <script>
-    (function () {
-      let current = null;
+  document.addEventListener('DOMContentLoaded', () => {
+    const players = document.querySelectorAll('audio');
+    let currentlyPlaying = null;
 
-      function stop(audio) {
-        if (!audio) return;
-        try {
-          audio.pause();
-          audio.currentTime = 0;
-        } catch (e) {}
-      }
-
-      const players = Array.from(document.querySelectorAll('audio'));
-
-      players.forEach((player) => {
-        player.addEventListener('play', async () => {
-          if (current && current !== player) {
-            stop(current);              // קודם עוצרים את הישן
-          }
-          current = player;              // מגדירים מי הנגן הפעיל
-          if (player.paused) {           // לוודא שהחדש אכן מנגן
-            try { await player.play(); } catch (e) {}
-          }
-        });
-
-        player.addEventListener('ended', () => {
-          if (current === player) current = null;
-        });
-
-        // אם עצרו ידנית ואיפסו להתחלה — שחרור "הנגן הנוכחי"
-        player.addEventListener('pause', () => {
-          if (current === player && Math.abs(player.currentTime) < 0.001) {
-            current = null;
-          }
-        });
+    players.forEach(player => {
+      player.addEventListener('play', function() {
+        // עוצרים את הנגן הקודם אם יש כזה
+        if (currentlyPlaying && currentlyPlaying !== this) {
+          currentlyPlaying.pause();
+          currentlyPlaying.currentTime = 0;
+        }
+        
+        currentlyPlaying = this;
       });
-    })();
+
+      player.addEventListener('ended', function() {
+        if (currentlyPlaying === this) {
+          currentlyPlaying = null;
+        }
+      });
+
+      player.addEventListener('pause', function() {
+        if (currentlyPlaying === this) {
+          currentlyPlaying = null;
+        }
+      });
+    });
+  });
   </script>
 </body>
 </html>
