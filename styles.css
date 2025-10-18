@@ -398,3 +398,37 @@ textarea { min-height: 140px; resize: vertical }
   }
 }
 
+/* Back button - new styling */
+.back-btn {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--accent-dark);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: var(--accent-dark-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 900px) {
+  .back-btn {
+    left: 12px;
+    top: 12px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}
+
