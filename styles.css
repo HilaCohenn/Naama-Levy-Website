@@ -368,46 +368,33 @@ textarea { min-height: 140px; resize: vertical }
 /* Back button styling */
 .back-button {
   display: inline-block;
-  padding: 0.7rem 1.2rem;
+  padding: 0.5rem 0.8rem;  /* קטן יותר */
   background: var(--accent-dark);
   color: #fff;
   text-decoration: none;
-  border-radius: 10px;
-  font-size: 0.95rem;
+  border-radius: 8px;      /* קטן יותר */
+  font-size: 0.85rem;      /* קטן יותר */
   font-weight: 600;
-  box-shadow: 0 6px 16px rgba(142,74,47,.3);
+  box-shadow: 0 4px 12px rgba(142,74,47,.25);  /* צל עדין יותר */
   transition: transform .12s ease, box-shadow .2s ease, background .2s;
-  position: absolute;  /* שינוי מ-fixed ל-absolute */
-  left: 2rem;
-  top: 2rem;
+  position: fixed;         /* קבוע במקום */
+  left: 1.5rem;
+  top: 1.5rem;
   z-index: 1000;
 }
 
-/* הוספת position: relative לקונטיינר */
-.contact-page {
-  position: relative;  /* הוספת שורה זו */
-  min-height: 100vh;
-  background-color: var(--bg);
-  padding: 4rem min(8vw, 120px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* שאר העיצוב נשאר אותו דבר */
 .back-button:hover {
   background: var(--accent-dark-hover);
   transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(142,74,47,.35);
+  box-shadow: 0 6px 16px rgba(142,74,47,.3);
 }
 
 @media (max-width: 900px) {
   .back-button {
-    position: fixed;  /* במובייל נשאר fixed */
     left: 1rem;
     top: 1rem;
-    font-size: 0.9rem;
-    padding: 0.6rem 1rem;
+    font-size: 0.8rem;    /* עוד יותר קטן במובייל */
+    padding: 0.4rem 0.7rem;
   }
 }
 
