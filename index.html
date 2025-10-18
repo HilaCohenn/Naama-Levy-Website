@@ -104,14 +104,24 @@
     const players = Array.from(document.querySelectorAll('audio'));
 
     players.forEach((player) => {
-      player.addEventListener('play', () => {
-        // כשנגן אחד מתחיל לנגן — עוצרים את כל השאר ומחזירים להתחלה
-        players.forEach((other) => {
+      player.addEventListener('play', async (event) => {
+        // מונעים את ההפעלה המיידית
+        event.preventDefault();
+        
+        // עוצרים את כל הנגנים האחרים
+        await Promise.all(players.map(async (other) => {
           if (other !== player && !other.paused) {
             other.pause();
-            try { other.currentTime = 0; } catch (e) {}
+            try { 
+              other.currentTime = 0;
+              // מחכים רגע קטן שהנגן הקודם יפסיק
+              await new Promise(resolve => setTimeout(resolve, 50));
+            } catch (e) {}
           }
-        });
+        }));
+
+        // מפעילים את הנגן החדש
+        player.play();
       });
     });
   });
