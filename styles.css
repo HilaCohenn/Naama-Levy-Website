@@ -383,35 +383,38 @@ textarea { min-height: 140px; resize: vertical }
   }
 }
 
-/* === MOBILE-ONLY TWEAKS FOR BACK BUTTON (לא משנה את הדסקטופ) === */
+/* === MOBILE-ONLY: Back button floats nicely at top without shifting layout === */
 @media (max-width: 900px){
-  /* ה-bar העליון: דביק, נקי, בלי מרווחים ש"שוברים" את הפריסה */
+
   .back-bar{
-    position: sticky;
-    top: calc(env(safe-area-inset-top, 0px)); /* תמיכה ב-notch */
-    z-index: 5;
-    margin: 0 !important;
-    padding: 8px 4%;
-    background: var(--bg);              /* אותו רקע של העמוד */
-    box-shadow: 0 1px 0 rgba(0,0,0,.06);/* קו דקיק מתחת */
+    position: static !important; /* מבטלים sticky הקודם */
   }
 
-  /* הכפתור: רוחב מלא, ממורכז, לחיץ יותר */
   .back-button{
-    width: 100%;
-    justify-content: center;
-    padding: 12px 14px;
-    font-size: 16px;                    /* בלי זום באייפון */
-    border-radius: 14px;
+    position: fixed;              /* קבוע במסך */
+    top: 14px;
+    left: 50%;                    /* ממורכז */
+    transform: translateX(-50%);  /* ממורכז באמת */
+    z-index: 999;                 /* מעל הכל */
     background: #fff;
     color: var(--text-dark);
+    padding: 10px 18px;
+    font-size: 15px;
+    border-radius: 999px;
     border: 1px solid var(--border);
-    box-shadow: 0 6px 16px rgba(0,0,0,.08);
-    transform: none !important;         /* מבטל קפיצות hover במובייל */
+    box-shadow: 0 6px 14px rgba(0,0,0,.15);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background .25s ease, box-shadow .25s ease;
   }
 
-  /* מרווח עדין מתחת ל-bar כדי שלא "יידבק" לטופס/תמונה */
+  .back-button:hover{
+    background: #fffaf6;
+    box-shadow: 0 8px 18px rgba(0,0,0,.2);
+  }
+
+  /* הכפתור לא דוחף אלמנטים, כי הוא מחוץ לזרימה */
   .contact-content{
-    margin-top: 8px;
+    margin-top: 0 !important;
   }
 }
