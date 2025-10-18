@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Naama Levy - Film Composer</title>
-<meta name="description" content="Naama Levy is a film composer weaving emotional textures for cinema and visual media. Listen to her original works and collaborations.">
+  <meta name="description" content="Naama Levy is a film composer weaving emotional textures for cinema and visual media. Listen to her original works and collaborations.">
   <meta name="google-site-verification" content="yZ535NMCRbD0_r8lAi-KvB7fwfm_bmotaOwZCMelc-Q" />
   <link href="styles.css" rel="stylesheet" />
   <style>
@@ -17,7 +17,7 @@
   <section class="hero">
     <div class="text">
       <h1>Naama Levy</h1>
-      <p>A media and film composer recognized for a signature style rooted in emotionally driven music and deep sensitivity to each project’s narrative. With refined listening skills and a strong focus on client collaboration, I craft scores that seamlessly blend high-level musicality with advanced sound design and technology.</p>
+      <p>A media and film composer recognized for a signature style rooted in emotionally driven music and deep sensitivity to each project’s narrative. With refined listening skills and a strong focus on client collaboration, I craft scores that seamlessly blend high-level musicality with advanced sound design and technology.</p>
       <div class="buttons">
         <!-- הכפתור עכשיו מפנה לאזור הוידאו -->
         <a href="#video" class="btn">Listen Now</a>
@@ -35,7 +35,7 @@
     <div class="track">
       <span class="label">Trailer Music</span>
       <div class="player">
-        <audio controls>
+        <audio controls preload="none">
           <source src="Audio/trailer music.wav" type="audio/wav"/>
         </audio>
       </div>
@@ -44,7 +44,7 @@
     <div class="track">
       <span class="label">Drama</span>
       <div class="player">
-        <audio controls>
+        <audio controls preload="none">
           <source src="Audio/mood compositions- drama.mp3" type="audio/mpeg"/>
         </audio>
       </div>
@@ -53,7 +53,7 @@
     <div class="track">
       <span class="label">Chase</span>
       <div class="player">
-        <audio controls>
+        <audio controls preload="none">
           <source src="Audio/mood compositions-chase scene.mp3" type="audio/mpeg"/>
         </audio>
       </div>
@@ -62,7 +62,7 @@
     <div class="track">
       <span class="label">Piano Solo</span>
       <div class="player">
-        <audio controls>
+        <audio controls preload="none">
           <source src="Audio/mood compositions-piano solo.mp3" type="audio/mpeg"/>
         </audio>
       </div>
@@ -99,35 +99,45 @@
   <footer>
     <p>© 2025 Naama Levy - Film Composer</p>
   </footer>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const players = Array.from(document.querySelectorAll('audio'));
 
-    players.forEach((player) => {
-      player.addEventListener('play', async (event) => {
-        // מונעים את ההפעלה המיידית
-        event.preventDefault();
-        
-        // עוצרים את כל הנגנים האחרים
-        await Promise.all(players.map(async (other) => {
-          if (other !== player && !other.paused) {
-            other.pause();
-            try { 
-              other.currentTime = 0;
-              // מחכים רגע קטן שהנגן הקודם יפסיק
-              await new Promise(resolve => setTimeout(resolve, 50));
-            } catch (e) {}
+  <!-- נגן-יחיד: כשאחד מתחיל לנגן — הישן נעצר ומאופס -->
+  <script>
+    (function () {
+      let current = null;
+
+      function stop(audio) {
+        if (!audio) return;
+        try {
+          audio.pause();
+          audio.currentTime = 0;
+        } catch (e) {}
+      }
+
+      const players = Array.from(document.querySelectorAll('audio'));
+
+      players.forEach((player) => {
+        player.addEventListener('play', async () => {
+          if (current && current !== player) {
+            stop(current);              // קודם עוצרים את הישן
           }
-        }));
+          current = player;              // מגדירים מי הנגן הפעיל
+          if (player.paused) {           // לוודא שהחדש אכן מנגן
+            try { await player.play(); } catch (e) {}
+          }
+        });
 
-        // מפעילים את הנגן החדש
-        player.play();
+        player.addEventListener('ended', () => {
+          if (current === player) current = null;
+        });
+
+        // אם עצרו ידנית ואיפסו להתחלה — שחרור "הנגן הנוכחי"
+        player.addEventListener('pause', () => {
+          if (current === player && Math.abs(player.currentTime) < 0.001) {
+            current = null;
+          }
+        });
       });
-    });
-  });
-</script>
-
-
-
+    })();
+  </script>
 </body>
 </html>
