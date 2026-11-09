@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
-  <link href="styles.css" rel="stylesheet" />
+  <link href="styles.css?v=3" rel="stylesheet" />
   <style>
     html {
       scroll-behavior: smooth;
@@ -19,10 +19,10 @@
 <body>
   <section class="hero">
     <div class="text">
-      <h1>Naama Levy</h1>
-      <p>Welcome to my portfolio!<br>
-      I am a composer, orchestrator, and producer for screen, stage, and concert repertoire.<br>
-      I hold a B.Mus. in Composition from the Jerusalem Academy of Music and Dance, along with production training from BPM College, and I am a co-founder, composer, and orchestrator for GAMMA Orchestra - a 50+ member symphonic big-band fusion ensemble.</p>
+      <h1>NAMA</h1>
+      <p>Welcome to my website!</p>
+      <p>I am a composer, orchestrator, and producer writing for screen, stage and concert music. A graduate of the Jerusalem Academy of Music and Dance (B.Mus. in Composition) with additional production training from BPM College, I am also the co-founder, composer and orchestrator of the 57-member GAMMA Orchestra.</p>
+      <p>I thrive on collaborative and creative storytelling. Feel free to explore my featured cues below and watch selected works at the end of the page.</p>
       <div class="buttons">
         <!-- הכפתור עכשיו מפנה לאזור הוידאו -->
         <a href="#video" class="btn">Listen Now</a>
@@ -30,7 +30,56 @@
       </div>
     </div>
     <div class="photo">
-      <img src="profile.jpg" alt="Naama portrait"/>
+      <img src="קונצרט לגיא-21 (2).jpg" alt="Naama conducting the orchestra"/>
+    </div>
+  </section>
+
+  <!-- הוספתי id="video" כדי שהכפתור ידע לאן לגלול -->
+  <section class="video" id="video">
+    <h2>Featured Projects</h2>
+    <div class="video-grid">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/I92BnzmdCsM"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/mJ_zWqs30a4"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/8D7gqH303Hk"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/XKZKmjnI4SQ?si=r5if4mRWKspw6esn"
+        title="YouTube video player" frameborder="0"
+        allowfullscreen></iframe>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/41kyTBbSp6c?si=rjWxhiPx1g0I6ZIt"
+        title="YouTube video player" frameborder="0"
+        allowfullscreen></iframe>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/neVHOVbSbHY"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/VCuhhq0110s?si=eMgkffCMimznXdvb"
+        title="YouTube video player" frameborder="0"
+        allowfullscreen></iframe>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/PsflvZTp9Ig?si=QRGZWdkUd63Rjjis"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/DLkL1P6UH2g"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+
     </div>
   </section>
 
@@ -47,7 +96,7 @@
     </div>
 
     <div class="track">
-      <span class="label">Dramatic Emotions</span>
+      <span class="label">Emotional Scene</span>
       <div class="player">
         <audio controls preload="none">
           <source src="Audio/mood compositions- drama.mp3" type="audio/mpeg"/>
@@ -74,44 +123,11 @@
     </div>
   </section>
 
-  <!-- הוספתי id="video" כדי שהכפתור ידע לאן לגלול -->
-  <section class="video" id="video">
-    <h2>Featured Projects</h2>
-    <div class="video-grid">
-      <iframe id="yt-video-1" width="560" height="315" src="https://www.youtube.com/embed/DLkL1P6UH2g?enablejsapi=1"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-
-      <iframe id="yt-video-2" width="560" height="315" src="https://www.youtube.com/embed/PsflvZTp9Ig?si=QRGZWdkUd63Rjjis&enablejsapi=1"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-
-      <iframe id="yt-video-3" width="560" height="315" src="https://www.youtube.com/embed/VCuhhq0110s?si=eMgkffCMimznXdvb&enablejsapi=1"
-        title="YouTube video player" frameborder="0"
-        allowfullscreen></iframe>
-
-      <iframe id="yt-video-4" width="560" height="315" src="https://www.youtube.com/embed/41kyTBbSp6c?si=rjWxhiPx1g0I6ZIt&enablejsapi=1"
-        title="YouTube video player" frameborder="0"
-        allowfullscreen></iframe>
-      <iframe id="yt-video-5" width="560" height="315" src="https://www.youtube.com/embed/XKZKmjnI4SQ?si=r5if4mRWKspw6esn&enablejsapi=1"
-        title="YouTube video player" frameborder="0"
-        allowfullscreen></iframe>
-      <iframe id="yt-video-6" width="560" height="315" src="https://www.youtube.com/embed/8D7gqH303Hk?enablejsapi=1"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-
-      <iframe id="yt-video-7" width="560" height="315" src="https://www.youtube.com/embed/mJ_zWqs30a4?enablejsapi=1"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-
-      <iframe id="yt-video-8" width="560" height="315" src="https://www.youtube.com/embed/I92BnzmdCsM?enablejsapi=1"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
+  <section class="gamma-project">
+    <div class="gamma-project-inner">
+      <h2>The GAMMA Project</h2>
+      <img src="גמאכללי.jpg" alt="GAMMA Orchestra" />
+      <p>Coming Soon</p>
     </div>
   </section>
 
@@ -127,6 +143,7 @@
 
     players.forEach(player => {
       player.addEventListener('play', function() {
+        // עוצרים את הנגן הקודם אם יש כזה
         if (currentlyPlaying && currentlyPlaying !== this) {
           currentlyPlaying.pause();
           currentlyPlaying.currentTime = 0;
@@ -148,47 +165,6 @@
       });
     });
   });
-
-  let activeVideoPlayer = null;
-
-  function setupVideoPlayers() {
-    const videoFrames = document.querySelectorAll('.video-grid iframe');
-
-    if (!videoFrames.length || !window.YT || !window.YT.Player) {
-      return;
-    }
-
-    videoFrames.forEach((frame) => {
-      const player = new YT.Player(frame, {
-        events: {
-          onStateChange: (event) => {
-            if (event.data === YT.PlayerState.PLAYING) {
-              if (activeVideoPlayer && activeVideoPlayer !== player) {
-                activeVideoPlayer.pauseVideo();
-              }
-              activeVideoPlayer = player;
-            }
-
-            if (event.data === YT.PlayerState.ENDED || event.data === YT.PlayerState.PAUSED) {
-              if (activeVideoPlayer === player) {
-                activeVideoPlayer = null;
-              }
-            }
-          }
-        }
-      });
-
-      frame._ytPlayer = player;
-    });
-  }
-
-  const ytApiScript = document.createElement('script');
-  ytApiScript.src = 'https://www.youtube.com/iframe_api';
-  document.head.appendChild(ytApiScript);
-
-  window.onYouTubeIframeAPIReady = function() {
-    setupVideoPlayers();
-  };
   </script>
 </body>
 </html>

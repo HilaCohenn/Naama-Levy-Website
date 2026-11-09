@@ -77,6 +77,10 @@ p {
   font-size: clamp(1.05rem, 0.8vw + 0.9rem, 1.25rem);
   color: var(--ink-soft);
   max-width: 590px;
+  margin-bottom: 1rem;
+}
+
+.hero p:last-of-type {
   margin-bottom: 2rem;
 }
 
@@ -160,13 +164,15 @@ p {
 
 .audio-inner,
 .video,
+.gamma-project-inner,
 footer {
   max-width: 1280px;
   margin: 0 auto;
 }
 
 .audio h2,
-.video h2 {
+.video h2,
+.gamma-project h2 {
   font-size: clamp(2.2rem, 2vw + 1.4rem, 3.2rem);
   font-weight: 600;
   margin-bottom: 1.5rem;
@@ -215,8 +221,8 @@ footer {
 
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
 }
 
 .video-grid iframe {
@@ -226,6 +232,33 @@ footer {
   border-radius: 1rem;
   background: #ddd;
   box-shadow: 0 16px 35px rgba(26, 22, 18, 0.08);
+}
+
+.gamma-project {
+  padding: 3rem clamp(1.25rem, 4vw, 4.5rem);
+  border-top: 1px solid var(--line);
+  background: rgba(255,255,255,0.14);
+}
+
+.gamma-project-inner {
+  text-align: center;
+}
+
+.gamma-project img {
+  display: block;
+  width: min(100%, 760px);
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  margin: 0 auto;
+  border: 1px solid rgba(31, 27, 24, 0.08);
+  border-radius: 1rem;
+  box-shadow: 0 16px 35px rgba(26, 22, 18, 0.08);
+}
+
+.gamma-project p {
+  margin-top: 1rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
 }
 
 footer {
@@ -357,6 +390,10 @@ textarea {
 }
 
 @media (max-width: 900px) {
+  .video-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .hero {
     grid-template-columns: 1fr;
     padding-top: 2rem;
@@ -402,9 +439,14 @@ textarea {
   .hero,
   .audio,
   .video,
+  .gamma-project,
   .contact-page {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
   }
 
   .buttons {
